@@ -1,10 +1,18 @@
-node('node') {
-  
-  stage 'Checkout'
-    checkout scm
-  stage 'Init'
-    sh 'npm install assert'
-  stage 'Test'
-    sh 'node .'
-    
+pipeline {
+  agent any
+ 
+  tools {nodejs "node"}
+ 
+  stages {
+    stage('Init') {
+      steps {
+        sh 'npm install assert'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'node .'
+      }
+    }
+  }
 }
