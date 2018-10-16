@@ -1,7 +1,7 @@
-const assert = require('assert');
+const express = require('express')
+const app = express()
+const port = 3000
 
-function add(a, b){
-    return a+b;
-}
+app.get('/', (req, res) => res.send('Hello World!'))
 
-assert.strictEqual(add(2,3), 5);
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
